@@ -17,7 +17,7 @@ before_script:
   - export PATH=$PATH:$PWD/android-sdk-linux/platform-tools/
   - chmod +x ./gradlew
   - set +o pipefail
-  - yes | android-sdk-linux/tools/bin/sdkmanager --licenses
+  - yes | .android-sdk-tools/bin/sdkmanager --licenses >/dev/null 2>&1
   - set -o pipefail
 
 stages:
