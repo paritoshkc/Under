@@ -1,0 +1,27 @@
+# see: https://hub.docker.com/r/jangrewe/gitlab-ci-android
+image: jangrewe/gitlab-ci-android:29
+
+stages:
+  - build
+  - test
+
+before_script:
+  - export GRADLE_USER_HOME=$(pwd)/.gradle
+  - chmod +x ./gradlew
+
+lintDebug:
+  stage: build
+  script: ./gradlew -Pci --console=plain :app:lintDebug -PbuildDir=lint
+
+assembleDebug:
+  stage: build
+  script:
+    - ./gradlew assembleDebug
+  artifacts:
+    paths:
+      - app/build/outputs/
+
+debugTests:
+    stage: test
+    script:
+      - ./gradlew -Pci --console=plain :app:testDebug
