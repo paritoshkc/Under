@@ -2,7 +2,6 @@ package ie.tcd.cs7cs3.under.Storage;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import java.util.Objects;
 
 @Entity
 public class User {
@@ -74,6 +73,12 @@ public class User {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, age, address, gender);
+    // XXX: not using Objects.hash for backward compatibility
+    int result = 17;
+    result = 31 * result + age;
+    result = 31 * result + name.hashCode();
+    result = 31 * result + address.hashCode();
+    result = 31 * result + gender.hashCode();
+    return result;
   }
 }
