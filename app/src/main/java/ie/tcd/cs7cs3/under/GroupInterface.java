@@ -7,6 +7,7 @@
 package ie.tcd.cs7cs3.under;
 
 public interface GroupInterface {
+
     /** Static method that adds a single User to the group object that owns the method.
      * We call this method when a user joins a group.
      * @author Stefan Spirkl
