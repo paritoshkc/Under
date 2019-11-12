@@ -8,11 +8,14 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
 
 import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
+@RunWith(RobolectricTestRunner.class)
 public class UserDaoTest {
   private UserDAO userDao;
   private AppDatabase db;
@@ -20,7 +23,7 @@ public class UserDaoTest {
   @Before
   public void setUp() throws Exception {
     Context context = getApplicationContext();
-    db = Room.inMemoryDatabaseBuilder(context, AppDatabase.class).build();
+    db = Room.inMemoryDatabaseBuilder(context, AppDatabase.class).allowMainThreadQueries().build();
     userDao = db.getUserDao();
   }
 

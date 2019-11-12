@@ -2,6 +2,7 @@ package ie.tcd.cs7cs3.under.Storage;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import java.util.Objects;
 
 @Entity
 public class User {
@@ -54,6 +55,26 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        User user = (User) o;
+        return id == user.id
+            && age == user.age
+            && name.equals(user.name)
+            && address.equals(user.address)
+            && gender.equals(user.gender);
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, age, address, gender);
     }
 
 }
