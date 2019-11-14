@@ -40,7 +40,7 @@ public class UserDaoTest {
 
   @Test
   public void testCreateAndReadUser() {
-    final User u = new User(1, "Joe", 23, "male", "123 Main Street");
+    final User u = new User("123-qwerty-456","Joe", 23, "male", "123 Main Street");
     userDao.insert(u);
     final List<User> users = userDao.findByName("Joe");
     assertThat(users.get(0), equalTo(u));
