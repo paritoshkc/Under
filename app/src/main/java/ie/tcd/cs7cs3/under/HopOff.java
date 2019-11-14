@@ -6,11 +6,16 @@
  */
 package ie.tcd.cs7cs3.under;
 
+import java.security.Timestamp;
+import java.util.Date;
+
 public class HopOff implements HopOffInterface {
 
     private float destinationOfTripLatitude;
     private float destinationOfTripLongitude;
     private String arrivalTime;
+    private boolean journeyFinished = false;
+
 
     /* constructor for a new destination where a User will get off */
     public HopOff(final User userWhoTravels, final float destinationOfTripLatitude, final float destinationOfTripLongitude) {
@@ -23,6 +28,9 @@ public class HopOff implements HopOffInterface {
      * @author Ashwin Ramasubramanian
      */
     public void arriveAtDestination() {
+        journeyFinished = true;
 
+        /* TODO: replace with current timestamp */
+        arrivalTime = "";
     }
 }
