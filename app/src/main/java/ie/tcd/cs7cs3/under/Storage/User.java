@@ -1,5 +1,8 @@
 package ie.tcd.cs7cs3.under.Storage;
 
+// TODO: move this whole package to ie.tcd.cs7cs3.storage
+// TODO: make this class package-private
+
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Index;
