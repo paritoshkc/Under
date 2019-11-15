@@ -4,7 +4,7 @@
  * @author Stefan Spirkl
  */
 
-package ie.tcd.cs7cs3.under;
+package ie.tcd.cs7cs3.under.GroupManager;
 
 public interface UserInterface {
     /** Static method that adds a rating to the User object that owns the method.

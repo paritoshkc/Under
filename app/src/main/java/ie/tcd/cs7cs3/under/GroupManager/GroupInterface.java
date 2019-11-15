@@ -4,7 +4,7 @@
  * @author Stefan Spirkl
  */
 
-package ie.tcd.cs7cs3.under;
+package ie.tcd.cs7cs3.under.GroupManager;
 
 public interface GroupInterface {
 

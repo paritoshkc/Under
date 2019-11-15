@@ -3,7 +3,7 @@
  * @author Stefan Spirkl
  */
 
-package ie.tcd.cs7cs3.under;
+package ie.tcd.cs7cs3.under.GroupManager;
 import java.util.List;
 
 public interface GroupManagerInterface {
