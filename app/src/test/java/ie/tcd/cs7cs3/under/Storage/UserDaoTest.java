@@ -4,7 +4,6 @@ import android.content.Context;
 
 import androidx.room.Room;
 
-import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,6 +1,7 @@
 package ie.tcd.cs7cs3.under.Storage;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
@@ -16,7 +17,18 @@ public class User {
   private String address;
   private String gender;
 
-  public User(String uuid, String name, int age, String gender, String address) {
+  // public-facing constructor, this is the only one that should be used externally
+  public User(String name, int age, String gender, String address) {
+    this.uuid = UUID.randomUUID().toString();
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+    this.address = address;
+  }
+
+  // only used for unit tests
+  @Ignore
+  User(String uuid, String name, int age, String gender, String address) {
     this.uuid = uuid;
     this.name = name;
     this.age = age;
