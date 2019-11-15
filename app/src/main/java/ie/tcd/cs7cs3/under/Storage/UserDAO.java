@@ -11,7 +11,7 @@ public interface UserDAO {
   String sqlFindByUUID = "SELECT id, uuid, name, age, gender, address from User WHERE uuid = :uuid";
   String sqlAll = "SELECT id, uuid, name, age, gender, address from User;";
 
-  @Insert(onConflict = OnConflictStrategy.REPLACE)
+  @Insert
   void insert(final User... users);
 
   @Query(sqlFindByUUID)

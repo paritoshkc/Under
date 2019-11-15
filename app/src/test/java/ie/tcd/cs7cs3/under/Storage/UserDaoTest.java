@@ -47,13 +47,11 @@ public class UserDaoTest {
     assertThat(v, equalTo(u));
   }
 
-  @Test
+  @Test(expected=android.database.sqlite.SQLiteConstraintException.class)
   public void testUniqueUUIDs() {
     final User u1 = new User(sampleUUID,"Joe", 23, "male", "123 Main Street");
-    final User u2 = new User(sampleUUID,"Joe", 23, "male", "123 Main Street");
+    final User u2 = new User(sampleUUID,"Jane", 23, "female", "123 Main Street");
     userDao.insert(u1);
-    userDao.insert(u2);
-    final List<User> users = userDao.all();
-    assertThat(users.size(), equalTo(1));
+    userDao.insert(u2); // boom
   }
 }
