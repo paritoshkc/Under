@@ -4,10 +4,7 @@
  * @author Stefan Spirkl
  * @author Ashwin Ramasubramanian
  */
-package ie.tcd.cs7cs3.under;
-
-import java.security.Timestamp;
-import java.util.Date;
+package ie.tcd.cs7cs3.under.GroupManager;
 
 public class HopOff implements HopOffInterface {
 

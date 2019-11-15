@@ -5,7 +5,7 @@
  * @author Ashwin Ramasubramanian
  */
 
-package ie.tcd.cs7cs3.under;
+package ie.tcd.cs7cs3.under.GroupManager;
 
 public interface HopOffInterface {
     /** Static method that signals that a user has arrived.

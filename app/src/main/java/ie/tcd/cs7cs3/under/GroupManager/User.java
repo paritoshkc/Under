@@ -5,7 +5,7 @@
  * @author Ashwin Ramasubramanian
  */
 
-package ie.tcd.cs7cs3.under;
+package ie.tcd.cs7cs3.under.GroupManager;
 
 public class User implements UserInterface {
 
@@ -37,4 +37,14 @@ public class User implements UserInterface {
     public void addNewRating(int rating) {
 
     }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public float getAverageRatingOfUser() {
+        return averageRatingOfUser;
+    }
+
+
 }
