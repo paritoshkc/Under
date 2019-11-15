@@ -27,11 +27,13 @@ import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
 
+import ie.tcd.cs7cs3.under.WifiP2P.WifiDirectBroadcastReceiver;
+
 public class MainActivity extends AppCompatActivity {
 
     Button btnOnOff, btnDiscover, btnSend;
     ListView listView;
-    TextView read_msg_box, connectionStatus;
+    public TextView read_msg_box, connectionStatus;
     EditText WriteMsg;
 
     WifiManager wifiManager;
@@ -131,7 +133,33 @@ public class MainActivity extends AppCompatActivity {
         mIntentFilter.addAction(WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION);
     }
 
-    WifiP2pManager.PeerListListener peerListListener=new WifiP2pManager.PeerListListener() {
+    public void AddPeersAvailable(WifiP2pDeviceList peerList) {
+
+        if(!peerList.getDeviceList().equals(peers)){
+            peers.clear();
+            peers.addAll(peerList.getDeviceList());
+
+            deviceNameArray=new String[peerList.getDeviceList().size()];
+            deviceArray=new WifiP2pDevice[ peerList.getDeviceList().size()];
+            int index=0;
+
+            for(WifiP2pDevice device : peerList.getDeviceList()){
+                deviceNameArray[index]=device.deviceName;
+                deviceArray[index]=device;
+                index++;
+            }
+
+            ArrayAdapter<String> adapter=new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,deviceNameArray);
+            listView.setAdapter(adapter);
+        }
+
+        if(peers.size() == 0){
+            Toast.makeText(getApplicationContext(), "No device Found", Toast.LENGTH_SHORT).show();
+            return;
+        }
+    }
+
+    public WifiP2pManager.PeerListListener peerListListener=new WifiP2pManager.PeerListListener() {
         @Override
         public void onPeersAvailable(WifiP2pDeviceList peerList) {
             if(!peerList.getDeviceList().equals(peers)){
@@ -161,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    WifiP2pManager.ConnectionInfoListener connectionInfoListener=new WifiP2pManager.ConnectionInfoListener() {
+    public WifiP2pManager.ConnectionInfoListener connectionInfoListener=new WifiP2pManager.ConnectionInfoListener() {
         @Override
         public void onConnectionInfoAvailable(WifiP2pInfo wifiP2pinfo) {
 

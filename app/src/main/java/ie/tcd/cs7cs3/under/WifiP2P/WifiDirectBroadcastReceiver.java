@@ -1,12 +1,18 @@
-package com.under.wifip2p;
+package ie.tcd.cs7cs3.under.WifiP2P;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
+import android.net.wifi.p2p.WifiP2pDevice;
+import android.net.wifi.p2p.WifiP2pDeviceList;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.widget.Toast;
+
+import ie.tcd.cs7cs3.under.MainActivity;
+
+import java.util.List;
 
 public class WifiDirectBroadcastReceiver extends BroadcastReceiver {
     private WifiP2pManager mManager;
@@ -32,6 +38,13 @@ public class WifiDirectBroadcastReceiver extends BroadcastReceiver {
                 Toast.makeText(context, "WiFi is OFF", Toast.LENGTH_SHORT).show();
             }
         }else if(WifiP2pManager.WIFI_P2P_PEERS_CHANGED_ACTION.equals(action)){
+            List<WifiP2pDevice> devices1 = intent.getParcelableExtra(WifiP2pManager.EXTRA_WIFI_P2P_DEVICE);
+            WifiP2pDeviceList devicesList = intent.getParcelableExtra(WifiP2pManager.EXTRA_P2P_DEVICE_LIST);
+
+            if(devicesList!= null){
+                mActivity.AddPeersAvailable(devicesList);
+            }
+
             if(mManager!=null){
                 mManager.requestPeers(mChannel,mActivity.peerListListener);
             }
