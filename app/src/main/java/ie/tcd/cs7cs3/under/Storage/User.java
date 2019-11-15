@@ -1,26 +1,55 @@
 package ie.tcd.cs7cs3.under.Storage;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity
+import java.util.UUID;
+
+@Entity(indices = {@Index(value={"uuid"},unique = true)})
 public class User {
-  @PrimaryKey private final long id;
+  @PrimaryKey(autoGenerate = true)
+  private long id;
+  private String uuid;
   private String name;
   private int age;
   private String address;
   private String gender;
 
-  public User(long id, String name, int age, String gender, String address) {
-    this.id = id;
+  // public-facing constructor, this is the only one that should be used externally
+  public User(String name, int age, String gender, String address) {
+    this.uuid = UUID.randomUUID().toString();
     this.name = name;
     this.age = age;
     this.gender = gender;
     this.address = address;
   }
 
-  public long getId() {
+  // only used for unit tests
+  @Ignore
+  User(String uuid, String name, int age, String gender, String address) {
+    this.uuid = uuid;
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+    this.address = address;
+  }
+
+  long getId() {
     return id;
+  }
+
+  void setId(final long newId) {
+    id = newId;
+  }
+
+  void setUuid(final String newUUID) {
+    uuid = newUUID;
+  }
+
+  public String getUuid() {
+    return uuid;
   }
 
   public String getName() {
@@ -55,6 +84,7 @@ public class User {
     this.address = address;
   }
 
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -64,7 +94,7 @@ public class User {
       return false;
     }
     User user = (User) o;
-    return id == user.id
+    return uuid.equals(user.uuid)
         && age == user.age
         && name.equals(user.name)
         && address.equals(user.address)

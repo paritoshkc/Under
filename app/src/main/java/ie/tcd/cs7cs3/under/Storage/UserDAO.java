@@ -8,9 +8,15 @@ import java.util.List;
 
 @Dao
 public interface UserDAO {
-  @Insert(onConflict = OnConflictStrategy.REPLACE)
-  public void insert(final User... users);
+  String sqlFindByUUID = "SELECT id, uuid, name, age, gender, address from User WHERE uuid = :uuid";
+  String sqlAll = "SELECT id, uuid, name, age, gender, address from User;";
 
-  @Query("SELECT id, name, age, gender, address from user WHERE name = :name")
-  public List<User> findByName(final String name);
+  @Insert
+  void insert(final User... users);
+
+  @Query(sqlFindByUUID)
+  User findByUUID(final String uuid);
+
+  @Query(sqlAll)
+  List<User> all();
 }
