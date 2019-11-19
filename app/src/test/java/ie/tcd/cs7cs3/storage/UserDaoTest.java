@@ -1,9 +1,12 @@
-package ie.tcd.cs7cs3.under.Storage;
+package ie.tcd.cs7cs3.storage;
 
 import android.content.Context;
 
 import androidx.room.Room;
 
+import ie.tcd.cs7cs3.storage.AppDatabase;
+import ie.tcd.cs7cs3.storage.User;
+import ie.tcd.cs7cs3.storage.UserDAO;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

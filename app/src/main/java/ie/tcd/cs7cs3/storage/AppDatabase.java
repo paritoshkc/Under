@@ -1,4 +1,4 @@
-package ie.tcd.cs7cs3.under.Storage;
+package ie.tcd.cs7cs3.storage;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
