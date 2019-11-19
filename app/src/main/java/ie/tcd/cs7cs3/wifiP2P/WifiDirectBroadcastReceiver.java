@@ -1,25 +1,22 @@
-package ie.tcd.cs7cs3.under.WifiP2P;
+package ie.tcd.cs7cs3.wifiP2P;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.NetworkInfo;
-import android.net.wifi.WifiManager;
 import android.net.wifi.p2p.WifiP2pDevice;
 import android.net.wifi.p2p.WifiP2pDeviceList;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.widget.Toast;
-
-import ie.tcd.cs7cs3.under.MainActivity;
 
 import java.util.List;
 
 public class WifiDirectBroadcastReceiver extends BroadcastReceiver {
     private WifiP2pManager mManager;
     private WifiP2pManager.Channel mChannel;
-    private MainActivity mActivity;
+    private WifiMainActivity mActivity;
 
-    public WifiDirectBroadcastReceiver(WifiP2pManager mManager, WifiP2pManager.Channel mChannel, MainActivity mActivity){
+    public WifiDirectBroadcastReceiver(WifiP2pManager mManager, WifiP2pManager.Channel mChannel, WifiMainActivity mActivity){
         this.mManager = mManager;
         this.mChannel = mChannel;
         this.mActivity = mActivity;
@@ -46,7 +43,7 @@ public class WifiDirectBroadcastReceiver extends BroadcastReceiver {
             }
 
             if(mManager!=null){
-                mManager.requestPeers(mChannel,mActivity.peerListListener);
+                //mManager.requestPeers(mChannel,mActivity.peerListListener);
             }
         }else if(WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION.equals(action)){
             if(mManager==null){

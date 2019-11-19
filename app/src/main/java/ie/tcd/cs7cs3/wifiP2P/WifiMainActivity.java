@@ -1,11 +1,10 @@
-package ie.tcd.cs7cs3.under;
+package ie.tcd.cs7cs3.wifiP2P;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
-import android.net.InetAddresses;
 import android.net.wifi.WifiManager;
 import android.net.wifi.p2p.WifiP2pConfig;
 import android.net.wifi.p2p.WifiP2pDevice;
@@ -27,9 +26,9 @@ import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
 
-import ie.tcd.cs7cs3.under.WifiP2P.WifiDirectBroadcastReceiver;
+import ie.tcd.cs7cs3.under.R;
 
-public class MainActivity extends AppCompatActivity {
+public class WifiMainActivity extends AppCompatActivity {
 
     Button btnOnOff, btnDiscover, btnSend;
     ListView listView;
@@ -50,10 +49,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_wifip2p_activity);
         initialWork();
         exqListener();
-
     }
 
     private void exqListener() {
@@ -136,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
     public void AddPeersAvailable(WifiP2pDeviceList peerList) {
 
         if(!peerList.getDeviceList().equals(peers)){
-            peers.clear();
+            //peers.clear();
             peers.addAll(peerList.getDeviceList());
 
             deviceNameArray=new String[peerList.getDeviceList().size()];
