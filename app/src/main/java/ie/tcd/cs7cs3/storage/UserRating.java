@@ -1,4 +1,6 @@
-package ie.tcd.cs7cs3.under.Storage;
+package ie.tcd.cs7cs3.storage;
+
+// TODO: make this class package-private
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

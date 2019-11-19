@@ -1,14 +1,14 @@
-package ie.tcd.cs7cs3.under.Storage;
+package ie.tcd.cs7cs3.storage;
 
 import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
 
 import android.content.Context;
-import android.database.Cursor;
 import androidx.room.Room;
-import androidx.room.RoomSQLiteQuery;
-import androidx.room.util.DBUtil;
-import java.util.Currency;
-import java.util.List;
+import ie.tcd.cs7cs3.storage.AppDatabase;
+import ie.tcd.cs7cs3.storage.User;
+import ie.tcd.cs7cs3.storage.UserDAO;
+import ie.tcd.cs7cs3.storage.UserRating;
+import ie.tcd.cs7cs3.storage.UserRatingDAO;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
