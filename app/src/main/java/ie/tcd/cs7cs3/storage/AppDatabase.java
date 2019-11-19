@@ -7,6 +7,6 @@ import androidx.room.RoomDatabase;
     entities = {UserEntity.class, UserRatingEntity.class},
     version = 1)
 public abstract class AppDatabase extends RoomDatabase {
-  public abstract UserEntityDAO getUserDao();
-  public abstract UserRatingEntityDAO getUserRatingDao();
+  public abstract UserEntityDAO getUserEntityDao();
+  public abstract UserRatingEntityDAO getUserRatingEntityDao();
 }

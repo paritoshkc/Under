@@ -28,8 +28,8 @@ public class UserEntityRatingDAOTest {
   public void setUp() throws Exception {
     final Context ctx = getApplicationContext();
     db = Room.inMemoryDatabaseBuilder(ctx, AppDatabase.class).allowMainThreadQueries().build();
-    userRatingEntityDAO = db.getUserRatingDao();
-    userEntityDAO = db.getUserDao();
+    userRatingEntityDAO = db.getUserRatingEntityDao();
+    userEntityDAO = db.getUserEntityDao();
     userEntityDAO.insert(testUserEntities);
   }
 

@@ -26,7 +26,7 @@ public class UserEntityDaoTest {
   public void setUp() throws Exception {
     Context context = getApplicationContext();
     db = Room.inMemoryDatabaseBuilder(context, AppDatabase.class).allowMainThreadQueries().build();
-    userEntityDao = db.getUserDao();
+    userEntityDao = db.getUserEntityDao();
   }
 
   @After
