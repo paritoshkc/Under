@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "3c6b266fd80062bd8e49430161bd9109",
+    "identityHash": "c227b9b43f6ffbc23a94b9752cdcab46",
     "entities": [
       {
         "tableName": "User",
@@ -53,12 +53,12 @@
         },
         "indices": [
           {
-            "name": "index_User_uuid",
+            "name": "index_UserEntity_uuid",
             "unique": true,
             "columnNames": [
               "uuid"
             ],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_User_uuid` ON `${TABLE_NAME}` (`uuid`)"
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_UserEntity_uuid` ON `${TABLE_NAME}` (`uuid`)"
           }
         ],
         "foreignKeys": []
@@ -105,7 +105,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3c6b266fd80062bd8e49430161bd9109')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c227b9b43f6ffbc23a94b9752cdcab46')"
     ]
   }
 }

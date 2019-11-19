@@ -9,8 +9,8 @@ import androidx.room.PrimaryKey;
 
 import java.util.UUID;
 
-@Entity(indices = {@Index(value={"uuid"},unique = true)})
-public class User {
+@Entity(indices = {@Index(value={"uuid"},unique = true)}, tableName = "User")
+class UserEntity {
   @PrimaryKey(autoGenerate = true)
   private long id;
   private String uuid;
@@ -20,7 +20,7 @@ public class User {
   private String gender;
 
   // public-facing constructor, this is the only one that should be used externally
-  public User(String name, int age, String gender, String address) {
+  UserEntity(String name, int age, String gender, String address) {
     this.uuid = UUID.randomUUID().toString();
     this.name = name;
     this.age = age;
@@ -30,7 +30,7 @@ public class User {
 
   // only used for unit tests
   @Ignore
-  User(String uuid, String name, int age, String gender, String address) {
+  UserEntity(String uuid, String name, int age, String gender, String address) {
     this.uuid = uuid;
     this.name = name;
     this.age = age;
@@ -50,39 +50,39 @@ public class User {
     uuid = newUUID;
   }
 
-  public String getUuid() {
+  String getUuid() {
     return uuid;
   }
 
-  public String getName() {
+  String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  void setName(String name) {
     this.name = name;
   }
 
-  public int getAge() {
+  int getAge() {
     return age;
   }
 
-  public void setAge(int age) {
+  void setAge(int age) {
     this.age = age;
   }
 
-  public String getGender() {
+  String getGender() {
     return gender;
   }
 
-  public void setGender(String gender) {
+  void setGender(String gender) {
     this.gender = gender;
   }
 
-  public String getAddress() {
+  String getAddress() {
     return address;
   }
 
-  public void setAddress(String address) {
+  void setAddress(String address) {
     this.address = address;
   }
 
@@ -95,12 +95,12 @@ public class User {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    User user = (User) o;
-    return uuid.equals(user.uuid)
-        && age == user.age
-        && name.equals(user.name)
-        && address.equals(user.address)
-        && gender.equals(user.gender);
+    UserEntity UserEntity = (UserEntity) o;
+    return uuid.equals(UserEntity.uuid)
+        && age == UserEntity.age
+        && name.equals(UserEntity.name)
+        && address.equals(UserEntity.address)
+        && gender.equals(UserEntity.gender);
   }
 
   @Override

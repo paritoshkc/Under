@@ -4,9 +4,6 @@ import android.content.Context;
 
 import androidx.room.Room;
 
-import ie.tcd.cs7cs3.storage.AppDatabase;
-import ie.tcd.cs7cs3.storage.User;
-import ie.tcd.cs7cs3.storage.UserDAO;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,16 +17,16 @@ import static org.junit.Assert.assertThat;
 
 @Config(manifest = Config.NONE)
 @RunWith(RobolectricTestRunner.class)
-public class UserDaoTest {
+public class UserEntityDaoTest {
   private final String sampleUUID = "123-qwerty-456";
-  private UserDAO userDao;
+  private UserEntityDAO userEntityDao;
   private AppDatabase db;
 
   @Before
   public void setUp() throws Exception {
     Context context = getApplicationContext();
     db = Room.inMemoryDatabaseBuilder(context, AppDatabase.class).allowMainThreadQueries().build();
-    userDao = db.getUserDao();
+    userEntityDao = db.getUserDao();
   }
 
   @After
@@ -43,17 +40,17 @@ public class UserDaoTest {
 
   @Test
   public void testCreateAndReadUser() {
-    final User u = new User(sampleUUID,"Joe", 23, "male", "123 Main Street");
-    userDao.insert(u);
-    final User v = userDao.findByUUID("123-qwerty-456");
+    final UserEntity u = new UserEntity(sampleUUID,"Joe", 23, "male", "123 Main Street");
+    userEntityDao.insert(u);
+    final UserEntity v = userEntityDao.findByUUID("123-qwerty-456");
     assertThat(v, equalTo(u));
   }
 
   @Test(expected=android.database.sqlite.SQLiteConstraintException.class)
   public void testUniqueUUIDs() {
-    final User u1 = new User(sampleUUID,"Joe", 23, "male", "123 Main Street");
-    final User u2 = new User(sampleUUID,"Jane", 23, "female", "123 Main Street");
-    userDao.insert(u1);
-    userDao.insert(u2); // boom
+    final UserEntity u1 = new UserEntity(sampleUUID,"Joe", 23, "male", "123 Main Street");
+    final UserEntity u2 = new UserEntity(sampleUUID,"Jane", 23, "female", "123 Main Street");
+    userEntityDao.insert(u1);
+    userEntityDao.insert(u2); // boom
   }
 }

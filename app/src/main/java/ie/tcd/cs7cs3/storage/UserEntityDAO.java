@@ -6,16 +6,16 @@ import androidx.room.Query;
 import java.util.List;
 
 @Dao
-public interface UserDAO {
+interface UserEntityDAO {
   String sqlFindByUUID = "SELECT id, uuid, name, age, gender, address from User WHERE uuid = :uuid";
   String sqlAll = "SELECT id, uuid, name, age, gender, address from User;";
 
   @Insert
-  void insert(final User... users);
+  void insert(final UserEntity... UserEntities);
 
   @Query(sqlFindByUUID)
-  User findByUUID(final String uuid);
+  UserEntity findByUUID(final String uuid);
 
   @Query(sqlAll)
-  List<User> all();
+  List<UserEntity> all();
 }
