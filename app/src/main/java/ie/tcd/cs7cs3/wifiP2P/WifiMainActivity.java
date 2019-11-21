@@ -1,10 +1,12 @@
 package ie.tcd.cs7cs3.wifiP2P;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.net.wifi.WifiManager;
 import android.net.wifi.p2p.WifiP2pConfig;
 import android.net.wifi.p2p.WifiP2pDevice;
@@ -22,7 +24,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +59,7 @@ public class WifiMainActivity extends AppCompatActivity {
         exqListener();
     }
 
+    @SuppressWarnings({"MissingPermission"})
     private void exqListener() {
         btnOnOff.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -211,5 +217,21 @@ public class WifiMainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         unregisterReceiver(mReceiver);
+    }
+
+    //inner Server Class
+    public class ServerClass extends Thread{
+         Socket socket;
+         ServerSocket serverSocket;
+
+        @Override
+        public void run() {
+            try {
+                serverSocket = new ServerSocket(8888);
+                socket = serverSocket.accept();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
