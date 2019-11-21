@@ -13,29 +13,28 @@ import java.util.UUID;
 class UserEntity {
   @PrimaryKey(autoGenerate = true)
   private long id;
+  private boolean current;
   private String uuid;
   private String name;
   private int age;
   private String address;
+  private float addressLat;
+  private float addressLng;
   private String gender;
 
-  // public-facing constructor, this is the only one that should be used externally
-  UserEntity(String name, int age, String gender, String address) {
-    this.uuid = UUID.randomUUID().toString();
-    this.name = name;
-    this.age = age;
-    this.gender = gender;
-    this.address = address;
-  }
+  // XXX: required by Room. Not for public consumption.
+  public UserEntity() { }
 
-  // only used for unit tests
   @Ignore
-  UserEntity(String uuid, String name, int age, String gender, String address) {
+  UserEntity(String uuid, boolean current, String name, int age, String gender, String address, float addressLat, float addressLng) {
     this.uuid = uuid;
+    this.current = current;
     this.name = name;
     this.age = age;
     this.gender = gender;
     this.address = address;
+    this.addressLat = addressLat;
+    this.addressLng = addressLng;
   }
 
   long getId() {
@@ -45,13 +44,20 @@ class UserEntity {
   void setId(final long newId) {
     id = newId;
   }
+  String getUuid() {
+    return uuid;
+  }
 
   void setUuid(final String newUUID) {
     uuid = newUUID;
   }
 
-  String getUuid() {
-    return uuid;
+  boolean isCurrent() {
+    return current;
+  }
+
+  void setCurrent(boolean current) {
+    this.current = current;
   }
 
   String getName() {
@@ -86,6 +92,21 @@ class UserEntity {
     this.address = address;
   }
 
+  float getAddressLat() {
+    return addressLat;
+  }
+
+  void setAddressLat(float addressLat) {
+    this.addressLat = addressLat;
+  }
+
+  float getAddressLng() {
+    return addressLng;
+  }
+
+  void setAddressLng(float addressLng) {
+    this.addressLng = addressLng;
+  }
 
   @Override
   public boolean equals(Object o) {

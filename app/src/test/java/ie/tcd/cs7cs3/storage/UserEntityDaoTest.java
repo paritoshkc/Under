@@ -40,7 +40,7 @@ public class UserEntityDaoTest {
 
   @Test
   public void testCreateAndReadUser() {
-    final UserEntity u = new UserEntity(sampleUUID,"Joe", 23, "male", "123 Main Street");
+    final UserEntity u = new UserEntity(sampleUUID, true, "Joe", 23, "male", "123 Main Street", 1.0F, -1.0F);
     userEntityDao.insert(u);
     final UserEntity v = userEntityDao.findByUUID("123-qwerty-456");
     assertThat(v, equalTo(u));
@@ -48,8 +48,8 @@ public class UserEntityDaoTest {
 
   @Test(expected=android.database.sqlite.SQLiteConstraintException.class)
   public void testUniqueUUIDs() {
-    final UserEntity u1 = new UserEntity(sampleUUID,"Joe", 23, "male", "123 Main Street");
-    final UserEntity u2 = new UserEntity(sampleUUID,"Jane", 23, "female", "123 Main Street");
+    final UserEntity u1 = new UserEntity(sampleUUID, true, "Joe", 23, "male", "123 Main Street", 1.0F, -1.0F);
+    final UserEntity u2 = new UserEntity(sampleUUID, true, "Jane", 23, "female", "123 Main Street", 1.0F, -1.0F);
     userEntityDao.insert(u1);
     userEntityDao.insert(u2); // boom
   }

@@ -16,8 +16,8 @@ import org.robolectric.annotation.Config;
 @RunWith(RobolectricTestRunner.class)
 public class UserEntityRatingDAOTest {
   private final UserEntity[] testUserEntities = new UserEntity[]{
-    new UserEntity("joe", 23, "male", "123 Main Street"),
-    new UserEntity("jane", 34, "female", "234 Old Street"),
+    new UserEntity("sample UUID 1", true, "joe", 23, "male", "123 Main Street", 1.0F, -1.0F),
+    new UserEntity("sample UUID 2", false ,"jane", 34, "female", "234 Old Street", 2.0F, -2.0F),
   };
 
   private UserRatingEntityDAO userRatingEntityDAO;
