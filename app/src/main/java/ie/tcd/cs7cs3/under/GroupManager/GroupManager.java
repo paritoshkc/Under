@@ -5,11 +5,12 @@
  * @return a list of groups that fit that destination / have a a similar destination
  */
 package ie.tcd.cs7cs3.under.GroupManager;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GroupManager implements GroupManagerInterface {
     /** this is the list that contains _all_ the groups in our system */
-    private static List<Group> listOfAllGroups;
+    private static List<Group> listOfAllGroups = new ArrayList<>();
 
     /** Capsules all group LISTS related activities.
      * @author Stefan Spirkl
@@ -18,7 +19,7 @@ public class GroupManager implements GroupManagerInterface {
      * @param longitude the latitude of the destination we want to find groups for
      * @return a list of groups that fit that destination / have a a similar destination
      */
-    public List<Group> findSimilarDestinationGroups(float latitude, float longitude) {
+    public static List<Group> findSimilarDestinationGroups(float latitude, float longitude) {
         /* TODO: currently is returning all groups */
         return listOfAllGroups;
     }
