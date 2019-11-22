@@ -18,15 +18,15 @@ class UserEntity {
   private String name;
   private int age;
   private String address;
-  private float addressLat;
-  private float addressLng;
+  private double addressLat;
+  private double addressLng;
   private String gender;
 
   // XXX: required by Room. Not for public consumption.
   public UserEntity() { }
 
   @Ignore
-  UserEntity(String uuid, boolean current, String name, int age, String gender, String address, float addressLat, float addressLng) {
+  UserEntity(String uuid, boolean current, String name, int age, String gender, String address, double addressLat, double addressLng) {
     this.uuid = uuid;
     this.current = current;
     this.name = name;
@@ -92,19 +92,19 @@ class UserEntity {
     this.address = address;
   }
 
-  float getAddressLat() {
+  double getAddressLat() {
     return addressLat;
   }
 
-  void setAddressLat(float addressLat) {
+  void setAddressLat(double addressLat) {
     this.addressLat = addressLat;
   }
 
-  float getAddressLng() {
+  double getAddressLng() {
     return addressLng;
   }
 
-  void setAddressLng(float addressLng) {
+  void setAddressLng(double addressLng) {
     this.addressLng = addressLng;
   }
 
@@ -133,5 +133,10 @@ class UserEntity {
     result = 31 * result + address.hashCode();
     result = 31 * result + gender.hashCode();
     return result;
+  }
+
+  @Override
+  public String toString() {
+    return "<User:" + uuid + ">";
   }
 }
