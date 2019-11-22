@@ -19,11 +19,9 @@ public class AddUserActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    AppDatabase appDatabase = AppDatabase.getInMemoryAppDatabase(getApplicationContext());
+    AppDatabase appDatabase = AppDatabase.getAppDatabase(getApplicationContext());
     this.users = appDatabase.getUserEntityDao();
     this.ratings = appDatabase.getUserRatingEntityDao();
-
-    seedData();
 
     setContentView(R.layout.activity_add_user);
     Toolbar toolbar = findViewById(R.id.toolbar);
@@ -51,12 +49,6 @@ public class AddUserActivity extends AppCompatActivity {
 
       Toast.makeText(getApplicationContext(), "Created user: " + ue.toString(), Toast.LENGTH_SHORT).show();
     });
-  }
-
-  void seedData() {
-    this.users.insert(new UserEntity(UUID.randomUUID().toString(), true, "root", 9999, "undefined", "localhost", 0.0, 0.0));
-    this.users.insert(new UserEntity(UUID.randomUUID().toString(), false, "John", 23, "male", "123 Main Street", Math.random() * 180, Math.random() * 90));
-    this.users.insert(new UserEntity(UUID.randomUUID().toString(), false, "Mary", 24, "female", "234 Old Lane", Math.random() * 180, Math.random() * 90));
   }
 
 }

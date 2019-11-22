@@ -14,13 +14,13 @@ public abstract class AppDatabase extends RoomDatabase {
   public abstract UserEntityDAO getUserEntityDao();
   public abstract UserRatingEntityDAO getUserRatingEntityDao();
 
-  public static AppDatabase getInMemoryAppDatabase(Context context) {
+  public static AppDatabase getAppDatabase(Context context) {
     if (null != INSTANCE) {
       return INSTANCE;
     }
-    // inmemory database builder for now
-    INSTANCE = Room.inMemoryDatabaseBuilder(context.getApplicationContext(), AppDatabase.class)
-        .allowMainThreadQueries() // XXX: this is bad
+    // demo database builder for now
+    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "underdb-demo")
+        .allowMainThreadQueries() // XXX: this is bad and we shouldn't do this
         .build();
     return INSTANCE;
   }
