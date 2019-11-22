@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mapbox.android.core.permissions.PermissionsListener;
@@ -60,6 +61,8 @@ public class Navigation extends AppCompatActivity implements OnMapReadyCallback,
     DirectionsRoute currentRoute;
     NavigationMapRoute navigationMapRoute;
 
+    TextView labelLongLat;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +73,8 @@ public class Navigation extends AppCompatActivity implements OnMapReadyCallback,
         mapView = (MapView) findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
+
+        labelLongLat = findViewById(R.id.textView);
     }
 
     public void startNaviationBtnClick(View v){
@@ -107,12 +112,8 @@ public class Navigation extends AppCompatActivity implements OnMapReadyCallback,
 
 
         Point destinationPoint = Point.fromLngLat(point.getLongitude(),point.getLatitude());
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_DENIED){
-
-
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
         }
-
-
         Point originPoint = Point.fromLngLat(locationComponent.getLastKnownLocation().getLongitude(),
                 locationComponent.getLastKnownLocation().getLatitude());
 
@@ -120,8 +121,9 @@ public class Navigation extends AppCompatActivity implements OnMapReadyCallback,
         if (source != null){
             source.setGeoJson(Feature.fromGeometry(destinationPoint));
         }
+        labelLongLat.setText("Latitude "+point.getLatitude()+ "\n Longitude " + point.getLongitude());
         getRoute(originPoint,destinationPoint);
-        return false;
+        return true;
     }
 
     private void getRoute(Point originPoint , Point destinationPoint){
@@ -145,8 +147,6 @@ public class Navigation extends AppCompatActivity implements OnMapReadyCallback,
 
                             }
                             navigationMapRoute.addRoute(currentRoute);
-
-
 
                         }
                     }
@@ -191,8 +191,6 @@ public class Navigation extends AppCompatActivity implements OnMapReadyCallback,
                 iconIgnorePlacement(true));
 
         style.addLayer(destinationSymbolLayer);
-
-
     }
 
 
