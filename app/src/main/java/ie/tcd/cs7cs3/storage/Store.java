@@ -1,5 +1,6 @@
 package ie.tcd.cs7cs3.storage;
 
+import android.annotation.SuppressLint;
 import ie.tcd.cs7cs3.under.GroupManager.UserInterface;
 import java.util.Optional;
 
@@ -17,6 +18,7 @@ public class Store implements StoreInterface {
     return null;
   }
 
+  @SuppressLint("NewApi")
   @Override
   public Optional<UserInterface> getUser(String uuid) {
     return Optional.empty();
