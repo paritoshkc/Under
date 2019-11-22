@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 joinGroupButton.setText("Group joined successfully.");
 
                 TextView stringTextView = (TextView) findViewById(R.id.textView2);
-                stringTextView.setText("Users in that Group " + GroupManager.findSimilarDestinationGroups(50,50).get(0).getUsersOfGroup().get(0) + "<br />" + GroupManager.findSimilarDestinationGroups(50,50).get(0).getUsersOfGroup().get(1)  );
+                stringTextView.setText("Joined that Group " + GroupManager.findSimilarDestinationGroups(50,50).get(0).getUsersOfGroup().get(0));
 
             }
         });
