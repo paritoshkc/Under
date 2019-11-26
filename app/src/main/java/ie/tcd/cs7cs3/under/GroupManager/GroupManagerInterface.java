@@ -13,5 +13,7 @@ public interface GroupManagerInterface {
         * @param longitude / the latitude of the destination we want to find groups for
         * @return a list of groups that fit that destination / have a a similar destination
         */
-        List<Group> findSimilarDestinationGroups(final float latitude, final float longitude);
+        static List<Group> findSimilarDestinationGroups(final float latitude, final float longitude) {
+                return null;
+        };
 }

@@ -7,6 +7,7 @@
 
 package ie.tcd.cs7cs3.under.GroupManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Group implements GroupInterface {
@@ -18,20 +19,22 @@ public class Group implements GroupInterface {
     private boolean groupIsAcceptingNewMembersAndNotMoving = true;
     private int capacity;
 
-    private List<User> usersInThatGroup;
+    private List<User> usersInThatGroup = new ArrayList<>();
 
     /** Constructor
      * @author Stefan Spirkl
      * @author Ashwin Ramasubramanian
      */
     public Group(final float startingPointLatitude, final float startingPointLongitude, final int capacity,
-                 final String recurringInterval, final String transportMode,final boolean femaleOnly) {
+                 final String recurringInterval, final String transportMode,final boolean femaleOnly, final User firstUserOfGroup) {
         this.startingPointLatitude = startingPointLatitude;
         this.startingPointLongitude = startingPointLongitude;
         this.capacity = capacity;
         this.recurringInterval = recurringInterval;
         this.transportMode = transportMode;
         this.femaleOnly = femaleOnly;
+
+        addUserToGroup(firstUserOfGroup);
     }
 
     /** Adds a single User to the group object that owns the method.
@@ -73,4 +76,13 @@ public class Group implements GroupInterface {
     public void startJourney() {
         groupIsAcceptingNewMembersAndNotMoving = false;
     }
+
+    /** Getter Method
+     * @author Stefan Spirkl
+     * @author Ashwin Ramasubramanian
+     */
+    public List<User> getUsersOfGroup() {
+        return usersInThatGroup;
+    }
+
 }
