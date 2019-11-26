@@ -12,4 +12,5 @@
   <string name="Foo">foo</string>
   <string name="title_activity_list_users">ListUsersActivity</string>
   <string name="add_user">Add User</string>
+  <string name="wifi_module">wifi_module</string>
 </resources>
