@@ -1,5 +1,6 @@
 package ie.tcd.cs7cs3.storage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -31,11 +32,15 @@ public class ListUsersActivity extends AppCompatActivity {
     setSupportActionBar(toolbar);
 
     FloatingActionButton fab = findViewById(R.id.fab);
-    fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-        .setAction("Add", null).show());
+    fab.setOnClickListener(this::handleAddUserClick);
 
     seedData();
     dumpAllUsers();
+  }
+
+  void handleAddUserClick(final View view) {
+    final Intent intent = new Intent(this, AddUserActivity.class);
+    startActivity(intent);
   }
 
   void seedData() {
