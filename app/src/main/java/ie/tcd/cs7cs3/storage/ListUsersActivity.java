@@ -2,7 +2,9 @@ package ie.tcd.cs7cs3.storage;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -14,6 +16,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class ListUsersActivity extends AppCompatActivity {
+  private Handler handler;
   private UserEntityDAO users;
   private UserRatingEntityDAO ratings;
 
@@ -22,6 +25,7 @@ public class ListUsersActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    handler = new Handler();
     setContentView(R.layout.activity_list_users);
     Toolbar toolbar = findViewById(R.id.toolbar);
 
@@ -31,11 +35,11 @@ public class ListUsersActivity extends AppCompatActivity {
 
     setSupportActionBar(toolbar);
 
-    FloatingActionButton fab = findViewById(R.id.fab);
-    fab.setOnClickListener(this::handleAddUserClick);
+    final Button b = findViewById(R.id.add_user_button);
+    b.setOnClickListener(this::handleAddUserClick);
 
     seedData();
-    dumpAllUsers();
+    dumpAllUsersForever();
   }
 
   void handleAddUserClick(final View view) {
@@ -52,10 +56,14 @@ public class ListUsersActivity extends AppCompatActivity {
     }
   }
 
+  void dumpAllUsersForever() {
+    this.handler.post(this::dumpAllUsers);
+  }
 
   void dumpAllUsers() {
     TextView dump = findViewById(R.id.dump);
     final StringBuilder sb = new StringBuilder();
+;
     for (final UserEntity u: users.all()) {
       sb.append("UUID: ");
       sb.append(u.getUuid());
@@ -80,5 +88,6 @@ public class ListUsersActivity extends AppCompatActivity {
       sb.append(")\n");
     }
     dump.setText(sb.toString());
+    this.handler.postDelayed(this::dumpAllUsers, 1000);
   }
 }

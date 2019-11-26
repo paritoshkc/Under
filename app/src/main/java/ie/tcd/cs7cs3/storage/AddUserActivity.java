@@ -48,6 +48,7 @@ public class AddUserActivity extends AppCompatActivity {
       this.users.insert(ue);
 
       Toast.makeText(getApplicationContext(), "Created user: " + ue.toString(), Toast.LENGTH_SHORT).show();
+      finish();
     });
   }
 

@@ -11,4 +11,5 @@
   <string name="uuid_goes_here">UUID Goes Here</string>
   <string name="Foo">foo</string>
   <string name="title_activity_list_users">ListUsersActivity</string>
+  <string name="add_user">Add User</string>
 </resources>
