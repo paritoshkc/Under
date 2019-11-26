@@ -2,15 +2,21 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "3c6b266fd80062bd8e49430161bd9109",
+    "identityHash": "e831c2b2ac9ce3518ab465a0bdddc7bd",
     "entities": [
       {
         "tableName": "User",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `uuid` TEXT, `name` TEXT, `age` INTEGER NOT NULL, `address` TEXT, `gender` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `current` INTEGER NOT NULL, `uuid` TEXT, `name` TEXT, `age` INTEGER NOT NULL, `address` TEXT, `addressLat` REAL NOT NULL, `addressLng` REAL NOT NULL, `gender` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "current",
+            "columnName": "current",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -37,6 +43,18 @@
             "columnName": "address",
             "affinity": "TEXT",
             "notNull": false
+          },
+          {
+            "fieldPath": "addressLat",
+            "columnName": "addressLat",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "addressLng",
+            "columnName": "addressLng",
+            "affinity": "REAL",
+            "notNull": true
           },
           {
             "fieldPath": "gender",
@@ -105,7 +123,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3c6b266fd80062bd8e49430161bd9109')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e831c2b2ac9ce3518ab465a0bdddc7bd')"
     ]
   }
 }

@@ -6,17 +6,17 @@ import androidx.room.Query;
 import java.util.List;
 
 @Dao
-public interface UserRatingDAO {
+public interface UserRatingEntityDAO {
   String sqlForUuid = "SELECT id, fromUuid, toUuid, rating FROM UserRating WHERE toUuid = :toUuid;";
   String sqlAll = "SELECT id, fromUuid, toUuid, rating FROM UserRating;";
 
   @Insert
-  void insert(final UserRating ... userRatings);
+  void insert(final UserRatingEntity... userRatingEntities);
 
   @Query(sqlForUuid)
-  List<UserRating> forUuid(final String toUuid);
+  List<UserRatingEntity> forUuid(final String toUuid);
 
   @Query(sqlAll)
-  List<UserRating> all();
+  List<UserRatingEntity> all();
 
 }

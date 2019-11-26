@@ -5,8 +5,8 @@ package ie.tcd.cs7cs3.storage;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
-public class UserRating {
+@Entity(tableName = "UserRating")
+class UserRatingEntity {
   @PrimaryKey(autoGenerate = true)
   private long id;
   private String fromUuid;
@@ -14,13 +14,13 @@ public class UserRating {
   private int rating;
   // TODO: add rating time
 
-  public UserRating(final String fromUuid, final String toUuid, final int rating) {
+  UserRatingEntity(final String fromUuid, final String toUuid, final int rating) {
     this.fromUuid = fromUuid;
     this.toUuid = toUuid;
     this.rating = rating;
   }
 
-  public long getId() {
+  long getId() {
     return id;
   }
 
@@ -28,15 +28,15 @@ public class UserRating {
     this.id = newID;
   }
 
-  public String getFromUuid() {
+  String getFromUuid() {
     return fromUuid;
   }
 
-  public String getToUuid() {
+  String getToUuid() {
     return toUuid;
   }
 
-  public int getRating() {
+  int getRating() {
     return rating;
   }
 }
