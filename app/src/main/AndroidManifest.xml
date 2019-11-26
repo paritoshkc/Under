@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".locationmanager.test"></activity>
         <activity android:name=".locationmanager.Navigation" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".locationmanager.LocationManagerMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

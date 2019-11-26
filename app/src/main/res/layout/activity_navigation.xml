@@ -17,7 +17,8 @@
         android:layout_height="wrap_content"
         android:text="Start Navigation"
         android:id="@+id/navigationButton"
-        android:onClick="startNaviationBtnClick"/>
+        android:onClick="startNaviationBtnClick"
+        />
 
     <TextView
         android:id="@+id/textView"

@@ -39,7 +39,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-import ie.tcd.cs7cs3.under.MainActivity;
 import ie.tcd.cs7cs3.under.R;
 import retrofit2.Call;
 import retrofit2.Callback;
