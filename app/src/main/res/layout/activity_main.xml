@@ -30,7 +30,8 @@
         android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintTop_toBottomOf="@+id/CreateGroup"
-        tools:layout_editor_absoluteX="103dp" />
+        tools:layout_editor_absoluteX="103dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView2"
@@ -43,7 +44,8 @@
         android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintTop_toBottomOf="@+id/JoinGroup"
-        tools:layout_editor_absoluteX="91dp" />
+        tools:layout_editor_absoluteX="91dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/CreateGroup"
@@ -54,7 +56,8 @@
         android:layout_marginTop="28dp"
         android:text="Create Group"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:layout_editor_absoluteX="142dp" />
+        tools:layout_editor_absoluteX="142dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/JoinGroup"
@@ -64,7 +67,8 @@
         android:layout_alignParentTop="false"
         android:text="Join Group"
         app:layout_constraintTop_toBottomOf="@+id/textView1"
-        tools:layout_editor_absoluteX="132dp" />
+        tools:layout_editor_absoluteX="132dp"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
