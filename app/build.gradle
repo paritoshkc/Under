@@ -26,6 +26,15 @@ android {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
     }
+    lintOptions {
+        abortOnError true
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def lintTask = tasks["lint${variant.name.capitalize()}"]
+            output.assemble.dependsOn lintTask
+        }
+    }
     useLibrary 'android.test.runner'
     useLibrary 'android.test.base'
     useLibrary 'android.test.mock'
