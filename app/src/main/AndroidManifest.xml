@@ -30,7 +30,7 @@
     </activity>
     <!-- Storage -->
     <activity
-      android:name="ie.tcd.cs7cs3.storage.ListUsersActivity"
+      android:name=".storage.ListUsersActivity"
       android:label="@string/title_activity_list_users"
       android:theme="@style/AppTheme.NoActionBar">
       <intent-filter>
@@ -39,12 +39,12 @@
       </intent-filter>
     </activity>
     <activity
-      android:name="ie.tcd.cs7cs3.storage.AddUserActivity"
+      android:name=".storage.AddUserActivity"
       android:label="AddUsersActivity"
       android:theme="@style/AppTheme.NoActionBar">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
-        android:value="ie.tcd.cs7cs3.storage.ListUsersActivity"
+        android:value=".storage.ListUsersActivity"
       />
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -62,11 +62,11 @@
       </intent-filter>
     </activity>
     <!-- WifiP2P -->
-    <activity android:name="ie.tcd.cs7cs3.wifiP2P.WifiMainActivity"
+    <activity android:name=".wifiP2P.WifiMainActivity"
       android:parentActivityName=".UnderMainActivity">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
-        android:value="ie.tcd.cs7cs3.wifiP2P.WifiMainActivity" />
+        android:value=".wifiP2P.WifiMainActivity" />
     </activity>
 
     <!-- LocationManager -->

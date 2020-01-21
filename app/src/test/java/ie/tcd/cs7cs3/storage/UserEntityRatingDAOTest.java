@@ -12,6 +12,12 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
+import ie.tcd.cs7cs3.under.storage.AppDatabase;
+import ie.tcd.cs7cs3.under.storage.UserEntity;
+import ie.tcd.cs7cs3.under.storage.UserEntityDAO;
+import ie.tcd.cs7cs3.under.storage.UserRatingEntity;
+import ie.tcd.cs7cs3.under.storage.UserRatingEntityDAO;
+
 @Config(manifest = Config.NONE)
 @RunWith(RobolectricTestRunner.class)
 public class UserEntityRatingDAOTest {

@@ -1,4 +1,4 @@
-package ie.tcd.cs7cs3.storage;
+package ie.tcd.cs7cs3.under.storage;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
@@ -6,7 +6,7 @@ import androidx.room.Query;
 import java.util.List;
 
 @Dao
-interface UserEntityDAO {
+public interface UserEntityDAO {
   String sqlFindCurrent = "SELECT id, uuid, current, name, age, gender, address, addressLat, addressLng from User WHERE current = 1";
   String sqlFindByUUID = "SELECT id, uuid, current, name, age, gender, address, addressLat, addressLng from User WHERE uuid = :uuid";
   String sqlAll = "SELECT id, uuid, current, name, age, gender, address, addressLat, addressLng from User;";

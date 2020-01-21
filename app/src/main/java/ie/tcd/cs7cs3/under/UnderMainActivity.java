@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import ie.tcd.cs7cs3.wifiP2P.WifiMainActivity;
+import ie.tcd.cs7cs3.under.wifiP2P.WifiMainActivity;
 
 public class UnderMainActivity extends AppCompatActivity {
     Button btnWifiP2p, btnUserLocation, btnGroupManager, btnDataStorage;

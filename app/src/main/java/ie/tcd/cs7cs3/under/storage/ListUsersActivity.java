@@ -1,4 +1,4 @@
-package ie.tcd.cs7cs3.storage;
+package ie.tcd.cs7cs3.under.storage;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,14 +6,11 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import ie.tcd.cs7cs3.under.R;
-import java.util.List;
-import java.util.UUID;
 
 public class ListUsersActivity extends AppCompatActivity {
   private Handler handler;

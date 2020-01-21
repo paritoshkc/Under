@@ -1,4 +1,4 @@
-package ie.tcd.cs7cs3.under.GroupManager;
+package ie.tcd.cs7cs3.GroupManager;
 
 import org.junit.Test;
 

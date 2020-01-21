@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ie.tcd.cs7cs3.wifiP2P.WifiMainActivity">
+    tools:context=".wifiP2P.WifiMainActivity">
 
     <Button
         android:id="@+id/onOff"

@@ -1,4 +1,4 @@
-package ie.tcd.cs7cs3.storage;
+package ie.tcd.cs7cs3.under.storage;
 
 // TODO: make this class package-private
 
@@ -7,10 +7,8 @@ import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-import java.util.UUID;
-
 @Entity(indices = {@Index(value={"uuid"},unique = true)}, tableName = "User")
-class UserEntity {
+public class UserEntity {
   @PrimaryKey(autoGenerate = true)
   private long id;
   private boolean current;
@@ -26,7 +24,7 @@ class UserEntity {
   public UserEntity() { }
 
   @Ignore
-  UserEntity(String uuid, boolean current, String name, int age, String gender, String address, double addressLat, double addressLng) {
+public UserEntity(String uuid, boolean current, String name, int age, String gender, String address, double addressLat, double addressLng) {
     this.uuid = uuid;
     this.current = current;
     this.name = name;
@@ -44,7 +42,7 @@ class UserEntity {
   void setId(final long newId) {
     id = newId;
   }
-  String getUuid() {
+  public String getUuid() {
     return uuid;
   }
 

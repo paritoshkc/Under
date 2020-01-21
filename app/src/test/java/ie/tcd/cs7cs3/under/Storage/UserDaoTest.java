@@ -11,6 +11,10 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
+import ie.tcd.cs7cs3.under.storage.AppDatabase;
+import ie.tcd.cs7cs3.under.storage.UserEntity;
+import ie.tcd.cs7cs3.under.storage.UserEntityDAO;
+
 import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -19,14 +23,14 @@ import static org.junit.Assert.assertThat;
 @RunWith(RobolectricTestRunner.class)
 public class UserDaoTest {
   private final String sampleUUID = "123-qwerty-456";
-  private UserDAO userDao;
+  private UserEntityDAO userDao;
   private AppDatabase db;
 
   @Before
   public void setUp() throws Exception {
     Context context = getApplicationContext();
     db = Room.inMemoryDatabaseBuilder(context, AppDatabase.class).allowMainThreadQueries().build();
-    userDao = db.getUserDao();
+    userDao = db.getUserEntityDao();
   }
 
   @After
@@ -40,16 +44,16 @@ public class UserDaoTest {
 
   @Test
   public void testCreateAndReadUser() {
-    final User u = new User(sampleUUID,"Joe", 23, "male", "123 Main Street");
+    final UserEntity u = new UserEntity(sampleUUID, true, "Joe", 23, "male", "123 Main Street", 1.0, 1.0);
     userDao.insert(u);
-    final User v = userDao.findByUUID("123-qwerty-456");
+    final UserEntity v = userDao.findByUUID("123-qwerty-456");
     assertThat(v, equalTo(u));
   }
 
   @Test(expected=android.database.sqlite.SQLiteConstraintException.class)
   public void testUniqueUUIDs() {
-    final User u1 = new User(sampleUUID,"Joe", 23, "male", "123 Main Street");
-    final User u2 = new User(sampleUUID,"Jane", 23, "female", "123 Main Street");
+    final UserEntity u1 = new UserEntity(sampleUUID, true, "Joe", 23, "male", "123 Main Street", 1.0, 1.0);
+    final UserEntity u2 = new UserEntity(sampleUUID, true, "Jane", 23, "female", "123 Main Street", 1.0, 1.0);
     userDao.insert(u1);
     userDao.insert(u2); // boom
   }

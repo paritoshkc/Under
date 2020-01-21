@@ -1,4 +1,4 @@
-package ie.tcd.cs7cs3.storage;
+package ie.tcd.cs7cs3.under.storage;
 
 // TODO: make this class package-private
 
@@ -6,7 +6,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "UserRating")
-class UserRatingEntity {
+public class UserRatingEntity {
   @PrimaryKey(autoGenerate = true)
   private long id;
   private String fromUuid;
@@ -14,7 +14,7 @@ class UserRatingEntity {
   private int rating;
   // TODO: add rating time
 
-  UserRatingEntity(final String fromUuid, final String toUuid, final int rating) {
+  public UserRatingEntity(final String fromUuid, final String toUuid, final int rating) {
     this.fromUuid = fromUuid;
     this.toUuid = toUuid;
     this.rating = rating;

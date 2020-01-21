@@ -11,6 +11,10 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
+import ie.tcd.cs7cs3.under.storage.AppDatabase;
+import ie.tcd.cs7cs3.under.storage.UserEntity;
+import ie.tcd.cs7cs3.under.storage.UserEntityDAO;
+
 import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;

@@ -17,24 +17,31 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
+import ie.tcd.cs7cs3.under.storage.AppDatabase;
+import ie.tcd.cs7cs3.under.storage.UserEntity;
+import ie.tcd.cs7cs3.under.storage.UserEntityDAO;
+import ie.tcd.cs7cs3.under.storage.UserRatingEntity;
+import ie.tcd.cs7cs3.under.storage.UserRatingEntityDAO;
+
 @Config(manifest = Config.NONE)
 @RunWith(RobolectricTestRunner.class)
 public class UserRatingDAOTest {
-  private final User[] testUsers = new User[]{
-    new User("joe", 23, "male", "123 Main Street"),
-    new User("jane", 34, "female", "234 Old Street"),
+  private final String sampleUUID = "deadbeef";
+  private final UserEntity[] testUsers = new UserEntity[]{
+    new UserEntity(sampleUUID, true, "joe", 23, "male", "123 Main Street", 1.0, 1.0),
+    new UserEntity(sampleUUID, false, "jane", 34, "female", "234 Old Street", 1.0, 2.0),
   };
 
-  private UserRatingDAO userRatingDAO;
-  private UserDAO userDAO;
+  private UserRatingEntityDAO userRatingDAO;
+  private UserEntityDAO userDAO;
   private AppDatabase db;
 
   @Before
   public void setUp() throws Exception {
     final Context ctx = getApplicationContext();
     db = Room.inMemoryDatabaseBuilder(ctx, AppDatabase.class).allowMainThreadQueries().build();
-    userRatingDAO = db.getUserRatingDao();
-    userDAO = db.getUserDao();
+    userRatingDAO = db.getUserRatingEntityDao();
+    userDAO = db.getUserEntityDao();
     userDAO.insert(testUsers);
   }
 
@@ -49,9 +56,9 @@ public class UserRatingDAOTest {
 
   @Test
   public void testAddNewUserRating() {
-    final User rater = userDAO.findByUUID(testUsers[0].getUuid());
-    final User ratee = userDAO.findByUUID(testUsers[1].getUuid());
-    userRatingDAO.insert(new UserRating(rater.getUuid(), ratee.getUuid(), 5));
+    final UserEntity rater = userDAO.findByUUID(testUsers[0].getUuid());
+    final UserEntity ratee = userDAO.findByUUID(testUsers[1].getUuid());
+    userRatingDAO.insert(new UserRatingEntity(rater.getUuid(), ratee.getUuid(), 5));
     Assert.assertEquals(1, userRatingDAO.forUuid(ratee.getUuid()).size());
   }
 }

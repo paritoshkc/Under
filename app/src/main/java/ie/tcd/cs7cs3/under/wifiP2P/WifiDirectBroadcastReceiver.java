@@ -1,4 +1,4 @@
-package ie.tcd.cs7cs3.wifiP2P;
+package ie.tcd.cs7cs3.under.wifiP2P;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
