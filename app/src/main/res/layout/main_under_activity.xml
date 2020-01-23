@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".UnderMainActivity">
+
+    <Button
+        android:id="@+id/wifiP2p"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="53dp"
+        android:text="WifiP2P Module" />
+
+    <Button
+        android:id="@+id/userLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/wifiP2p"
+        android:layout_marginBottom="-86dp"
+        android:layout_centerHorizontal="true"
+        android:text="User Location" />
+
+    <Button
+        android:id="@+id/groupManager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/userLocation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-82dp"
+        android:text="User Group" />
+
+    <Button
+        android:id="@+id/dataStorage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/groupManager"
+        android:layout_marginBottom="-86dp"
+        android:layout_centerHorizontal="true"
+        android:text="Data Storage" />
+
+</RelativeLayout>
